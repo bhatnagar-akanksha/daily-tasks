@@ -1,0 +1,23 @@
+.header{
+    display: flex;
+    background-color: #fff;
+}
+.logo{
+    font-size: 35px;
+    color: #0b80d2;
+    font-weight: 500;
+}
+.logout{
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+.username{
+    font-size: 35px;
+    font-weight: 500;
+    position: absolute;
+    right: 76px;
+    top: 18px;  
+    top: 18px;
+    font-style: italic
+}
