@@ -9,5 +9,36 @@ font-size: 20px;
     margin-top: 27px;
 }
 .taskLists{
-    display: flex
+    display: flex;
+    justify-content: center;
+}
+.addTask{
+    font-size: 25px;
+    position: relative;
+    top: 10px;
+    display:inline-block
+}
+.card{
+    background-color: white;
+    padding: 10px;
+    min-height: 100px;
+height: fit-content;
+    width: 350px;
+    margin: 5px;
+    
+   
+}
+.cardInfo{
+   font-size: 18px;
+   color: rgb(108, 106, 106);
+   width: 75%;
+}
+.editBtn{
+    display: inline-block;
+    position: relative;
+    left: 300px;
+    bottom: 45px;
+}
+.hidden{
+    display: none !important;
 }
