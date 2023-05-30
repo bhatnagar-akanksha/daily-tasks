@@ -1,6 +1,6 @@
 import './header.css';
 import logout from './image/logout.png';
-import logo from './/image/tasks-logo.png'
+import logo from './image/tasks-logo.png'
 
 function Header() {
     return (

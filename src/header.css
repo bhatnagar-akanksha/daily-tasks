@@ -1,6 +1,7 @@
 .header{
     display: flex;
     background-color: #fff;
+    padding: 14px;
 }
 .logo{
     font-size: 35px;

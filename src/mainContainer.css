@@ -1,0 +1,13 @@
+.toggle{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.taskDate{
+font-size: 20px;
+    margin-top: 27px;
+}
+.taskLists{
+    display: flex
+}
