@@ -4,13 +4,13 @@ import {ToggleTaskDays,ToDoList,CompletedTaskLists} from './toggleTask'
 
 const MainContainer = () =>{
 return(
-    <div>
+  <div>
     <ToggleTaskDays/>
     <div className='taskLists'>
         <ToDoList/>
         <CompletedTaskLists/>
     </div>
-    </div>
+  </div>
 );    
 }
 export default MainContainer

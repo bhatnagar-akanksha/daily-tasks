@@ -22,3 +22,14 @@
     top: 18px;
     font-style: italic
 }
+.footer{
+    height: 25px;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(3, 230, 230);
+    padding: 14px;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+
+}
