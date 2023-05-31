@@ -4,15 +4,15 @@
     justify-content: center;
     padding: 10px;
 }
-.taskDate{
+.task-date{
 font-size: 20px;
     margin-top: 27px;
 }
-.taskLists{
+.task-lists{
     display: flex;
     justify-content: center;
 }
-.addTask{
+.add-task{
     font-size: 25px;
     position: relative;
     top: 10px;
@@ -25,11 +25,11 @@ font-size: 20px;
     width: 350px;
     margin: 5px;   
 }
-.flexBox{
+.flex-box{
     display: flex;
     flex-direction: row;
 }
-.cardInfo{
+.card-info{
    font-size: 18px;
    color: rgb(108, 106, 106);
    flex-grow: 1;
@@ -38,7 +38,7 @@ font-size: 20px;
 .hidden{
     display: none !important;
 }
-.isComplete{
+.complete{
     height: 30px;
     width: 20px;
 

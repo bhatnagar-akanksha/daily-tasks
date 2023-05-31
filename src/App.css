@@ -39,3 +39,18 @@ body{
     transform: rotate(360deg);
   }
 }
+@media only screen and (max-width: 600px) {
+ .task-lists{
+  flex-direction: column;
+ }
+ .header{
+  flex-direction: column;
+  flex-wrap: wrap;
+ }
+}
+@media only screen and (max-width: 400px) {
+ .username{
+  display: none;
+ }
+
+}

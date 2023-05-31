@@ -1,8 +1,9 @@
-import './header.css';
+import React from 'react'
+import './Header.css';
 import logout from './image/logout.png';
 import logo from './image/tasks-logo.png'
 
-function Header() {
+const Header = () => {
     return (
       <div>
       <div className="header">

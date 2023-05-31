@@ -1,12 +1,12 @@
-import './mainContainer.css'
-import {ToggleTaskDays,ToDoList,CompletedTaskLists} from './toggleTask'
-
+import React from 'react'
+import './MainContainer.css'
+import {ToggleTaskDays,ToDoList,CompletedTaskLists} from './ToggleTask'
 
 const MainContainer = () =>{
 return(
   <div>
     <ToggleTaskDays/>
-    <div className='taskLists'>
+    <div className='task-lists'>
         <ToDoList/>
         <CompletedTaskLists/>
     </div>
