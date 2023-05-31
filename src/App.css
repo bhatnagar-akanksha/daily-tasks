@@ -39,18 +39,22 @@ body{
     transform: rotate(360deg);
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
  .task-lists{
-  flex-direction: column;
+   flex-direction: column;
  }
  .header{
-  flex-direction: column;
-  flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: wrap;
+ }
+ .task-lists > div{
+    align-self: center;
  }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
  .username{
-  display: none;
+    font-size: 12px;
+    display: contents;
  }
 
 }
