@@ -50,11 +50,24 @@ body{
  .task-lists > div{
     align-self: center;
  }
+ .card{
+  width: 270px !important;
+ }
 }
 @media only screen and (max-width: 450px) {
  .username{
-    font-size: 12px;
-    display: contents;
+    font-size: 12px !important;
  }
-
+ .card{
+  width: 200px !important;
+ }
 }
+@media only screen and (max-width: 220px) {
+  .username{
+     font-size: 12px !important;
+  }
+  .card{
+   width: 120px !important;
+  }
+ 
+ }

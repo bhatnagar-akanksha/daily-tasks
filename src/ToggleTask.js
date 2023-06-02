@@ -4,6 +4,8 @@ import PreviousBtn from './image/left-arrow.svg'
 import NextBtn from './image/right-arrow.svg'
 import AddTasksBtn from './image/add-tasks.svg'
 import TaskCard from './TaskCard';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const ToggleTaskDays = () =>{
 return(
@@ -27,7 +29,29 @@ const CompletedTaskLists = () =>{
         return(
         <div>
          <div style={{fontSize: '25px', display:'inline-block'}} > TO-DO:</div>
-            <a className = 'add-task' href='#'> <img src={AddTasksBtn} alt="next button" width="40" height="40"/></a>
+            <Popup  contentStyle={{ width: '30%',height:'fit-content' }} open={true} trigger=
+                {<a className = 'add-task' href='#'><img src={AddTasksBtn} alt="next button" width="40" height="40" /> </a>}
+                modal>   
+                {
+                    close => (
+                        <div className='model'>
+                           <div className='row-1'>
+                               <span style={{flexGrow:'2'}}>Add Task </span>
+                                 <button onClick={() => close()}>
+                                   <span aria-hidden="true">×</span>
+                                  </button>
+                            </div>
+                           <div className='add-task-inputs'>
+                             <input type="text" id="taskName" className="form-control input-text" placeholder="Task Name" required="" />  
+                             <textarea type="text" id="taskDescription" className="form-control input-text" placeholder="Task Description" required=""/>  
+                             <button className='submit-new-task'>
+                              <span aria-hidden="true">Submit</span>
+                            </button>
+                          </div>  
+                        </div>
+                    )
+                }
+            </Popup>        
             <TaskCard title={"routine"} description="important tasks for the day" display/>
             <TaskCard title={"office meeting"} description="Attend daily scrum call @11am and present new requirements" display/>
          </div>
