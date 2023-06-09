@@ -1,0 +1,75 @@
+.toggle{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.task-date{
+font-size: 20px;
+    margin-top: 27px;
+}
+.task-lists{
+    display: flex;
+    justify-content: center;
+}
+.add-task{
+    font-size: 25px;
+    position: relative;
+    top: 10px;
+    display:inline-block
+}
+.card{
+    background-color: white;
+    padding: 10px;
+    min-height: 100px;
+    width: 350px;
+    margin: 5px;  
+    word-break: break-all; 
+}
+.flex-box{
+    display: flex;
+    flex-direction: row;
+}
+.card-info{
+   font-size: 18px;
+   color: rgb(108, 106, 106);
+   flex-grow: 1;
+}
+
+.hidden{
+    display: none !important;
+}
+.complete{
+    height: 30px;
+    width: 20px;
+}
+.row-1{
+    display: flex;
+    flex-direction: row;
+    margin-left: 14px;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.add-task-inputs{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px;
+}
+.add-task-inputs >input {
+    margin: 10px;
+    padding: 10px;
+}
+.add-task-inputs >textarea{
+    margin: 10px;
+    padding: 10px;
+}
+
+.submit-new-task{
+    margin: 10px;
+    padding: 10px;
+   color: #0b80d2;
+   font-size: 20px;
+   font-weight:600;
+}
