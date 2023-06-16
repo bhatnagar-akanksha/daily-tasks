@@ -6,6 +6,7 @@ import AddTasksBtn from './image/add-tasks.svg'
 import TaskCard from './TaskCard';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import "./App.css"
 
 const ToggleTaskDays = () =>{
 return(
@@ -29,7 +30,7 @@ const CompletedTaskLists = () =>{
         return(
         <div>
          <div style={{fontSize: '25px', display:'inline-block'}} > TO-DO:</div>
-            <Popup  contentStyle={{ width: '30%',height:'fit-content' }} open={true} trigger=
+            <Popup  contentStyle={{ width: '30%',height:'fit-content' }} trigger=
                 {<a className = 'add-task' href='#'><img src={AddTasksBtn} alt="next button" width="40" height="40" /> </a>}
                 modal>   
                 {
