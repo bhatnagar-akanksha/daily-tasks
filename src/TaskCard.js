@@ -62,7 +62,7 @@ const TaskCard = ({ title, display, description, id }) => {
                   <input
                     type="text"
                     name="taskName"
-                    // className="form-control input-text"
+                    value={taskName}
                     // onChange={updateTaskName}
                     placeholder="Task Name"
                     required=""
@@ -71,6 +71,7 @@ const TaskCard = ({ title, display, description, id }) => {
                     type="text"
                     name="taskDescription"
                     // onChange ={updateTaskDescription}
+                    value={taskDescription}
                     placeholder="Task Description"
                   />
                   <button type="submit" className="submit-edited-task">
