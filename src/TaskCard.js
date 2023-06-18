@@ -5,12 +5,14 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./App.css";
 
-const TaskCard = ({ title, display, description }) => {
+const TaskCard = ({ title, display, description, id }) => {
   console.log(title, description);
   const [taskName, setTaskName] = useState(title);
   const [taskDescription, setTaskDescription] = useState(description);
   const [isOpen, setOpen] = useState(false);
-
+  const handleEditTask = (e) => {
+    setOpen(true);
+  };
   // const updateTaskName =(e) =>{
   //   setTaskName(e.target.firstChild.childNodes[1].value)
   // }
@@ -22,13 +24,11 @@ const TaskCard = ({ title, display, description }) => {
     e.preventDefault();
     setTaskName(e.target.firstChild.childNodes[0].value);
     setTaskDescription(e.target.firstChild.childNodes[1].value);
-    setTimeout(() => {
-      setOpen(false);
-    }, 500);
+    setOpen(false);
   };
   return (
     <div className="card">
-      <div className="flex-box">
+      <div key={id} className="flex-box">
         <span className="card-info" value={taskName}>
           {taskName}
         </span>
@@ -37,7 +37,13 @@ const TaskCard = ({ title, display, description }) => {
           trigger={
             <span className={display ? "edit-btn" : "hidden edit-btn"}>
               {" "}
-              <img src={editBtn} alt="edit button" width="30" height="30" />
+              <img
+                onClick={handleEditTask}
+                src={editBtn}
+                alt="edit button"
+                width="30"
+                height="30"
+              />
             </span>
           }
           modal
