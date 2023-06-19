@@ -68,14 +68,12 @@ const ToDoList = () => {
               <div className="add-task-inputs">
                 <input
                   type="text"
-                  id="taskName"
                   className="form-control input-text"
                   placeholder="Task Name"
                   required=""
                 />
                 <textarea
                   type="text"
-                  id="taskDescription"
                   className="form-control input-text"
                   placeholder="Task Description"
                   required=""

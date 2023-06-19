@@ -6,21 +6,13 @@ import "reactjs-popup/dist/index.css";
 import "./App.css";
 
 const TaskCard = ({ title, display, description, id }) => {
-  console.log(title, description);
   const [taskName, setTaskName] = useState(title);
   const [taskDescription, setTaskDescription] = useState(description);
   const [isOpen, setOpen] = useState(false);
   const handleEditTask = (e) => {
     setOpen(true);
   };
-  // const updateTaskName =(e) =>{
-  //   setTaskName(e.target.firstChild.childNodes[1].value)
-  // }
-  // const updateTaskDescription =(e) =>{
-  //   setTaskDescription(e.target.value)
-  // }
   const handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
     setTaskName(e.target.firstChild.childNodes[0].value);
     setTaskDescription(e.target.firstChild.childNodes[1].value);
@@ -63,14 +55,12 @@ const TaskCard = ({ title, display, description, id }) => {
                     type="text"
                     name="taskName"
                     value={taskName}
-                    // onChange={updateTaskName}
                     placeholder="Task Name"
                     required=""
                   />
                   <textarea
                     type="text"
                     name="taskDescription"
-                    // onChange ={updateTaskDescription}
                     value={taskDescription}
                     placeholder="Task Description"
                   />
