@@ -1,40 +1,86 @@
-import React from 'react'
-import './MainContainer.css';
-import editBtn from './image/edit.svg';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import React, { useState } from "react";
+import "./MainContainer.css";
+import editBtn from "./image/edit.svg";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import "./App.css";
 
-const TaskCard = ({title, display, description}) =>{
-    return(
-     <div className='card'>
-      <div className='flex-box'>
-        <span className='card-info'>{title}</span>
-        <Popup  contentStyle={{ width: '30%',height:'fit-content'}} open={true} trigger=
-                {<span className={display?'edit-btn': 'hidden edit-btn'}> <img src={editBtn} alt="edit button" width="30" height="30"/></span>}
-                modal>   
-                {
-                close => (                              
-                        <div className='model'>
-                           <div className='row-1'>
-                               <span style={{flexGrow:'2'}}>Edit Task </span>
-                               <button onClick={() => close()}>
-                                <span aria-hidden="true">×</span></button>
-                            </div>
-                           <div className='add-task-inputs'>
-                             <input type="text" id="taskName" className="form-control input-text" placeholder="Task Name" required="" />  
-                             <textarea type="text" id="taskDescription" className="form-control input-text" placeholder="Task Description" required=""/>  
-                             <button className='submit-new-task'>
-                               <span aria-hidden="true">Submit</span>
-                             </button>
-                          </div>  
-                        </div>
-                    )
-                }
-            </Popup>     
-        <input className='complete' value = "test" type = "checkbox" defaultChecked={!display} />
+const TaskCard = ({ title, display, description, id }) => {
+  const [taskName, setTaskName] = useState(title);
+  const [taskDescription, setTaskDescription] = useState(description);
+  const [isOpen, setOpen] = useState(false);
+  const handleEditTask = (e) => {
+    setOpen(true);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTaskName(e.target.firstChild.childNodes[0].value);
+    setTaskDescription(e.target.firstChild.childNodes[1].value);
+    setOpen(false);
+  };
+  return (
+    <div className="card">
+      <div key={id} className="flex-box">
+        <span className="card-info" value={taskName}>
+          {taskName}
+        </span>
+        <Popup
+          contentStyle={{ width: "30%", height: "fit-content" }}
+          trigger={
+            <span className={display ? "edit-btn" : "hidden edit-btn"}>
+              {" "}
+              <img
+                onClick={handleEditTask}
+                src={editBtn}
+                alt="edit button"
+                width="30"
+                height="30"
+              />
+            </span>
+          }
+          modal
+          open={isOpen}
+        >
+          {(close) => (
+            <div className="model">
+              <div className="row-1">
+                <span style={{ flexGrow: "2" }}>Edit Task </span>
+                <button onClick={() => close()}>
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="add-task-inputs">
+                  <input
+                    type="text"
+                    name="taskName"
+                    value={taskName}
+                    placeholder="Task Name"
+                    required=""
+                  />
+                  <textarea
+                    type="text"
+                    name="taskDescription"
+                    value={taskDescription}
+                    placeholder="Task Description"
+                  />
+                  <button type="submit" className="submit-edited-task">
+                    <span aria-hidden="true">Submit</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </Popup>
+        <input
+          className="complete"
+          value="test"
+          type="checkbox"
+          defaultChecked={!display}
+        />
       </div>
-     <div>{description}</div> 
-</div>
- )
-}
-export default TaskCard
+      <div value={taskDescription}>{taskDescription}</div>
+    </div>
+  );
+};
+export default TaskCard;
