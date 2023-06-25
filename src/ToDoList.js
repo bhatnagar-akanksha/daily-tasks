@@ -11,90 +11,163 @@ let taskData = [
     id: 1,
     taskName: "sample task",
     taskDescription: "sample description",
+    isComplete: false,
+  },
+  {
+    id: 2,
+    taskName: "sample task",
+    taskDescription: "sample description",
+    isComplete: true, 
   },
 ];
-
 const ToDoList = () => {
   const [isOpen, setOpen] = useState(false);
-  const [taskCard, setTaskCard] = useState(taskData);
+  const [taskList, setTaskCard] = useState(taskData);
+ 
+  const updateStatusHandler = (id) => {
+    console.log(id);
+    var newTaskData = [];
+    for (var i = 0; i < taskList.length; i++) {
+      if (taskList[i].id == id) {
+        taskList[i].isComplete = !taskList[i].isComplete;
+        newTaskData.push(taskList[i]);
+      } else {
+        newTaskData.push(taskList[i]);
+      }
+    }
+    setTaskCard(newTaskData);
+  };
+
   const handleAddTask = () => {
     setOpen(true);
   };
+
+  const editHandler = (updatedTaskName,updatedTaskDescription,id) => {
+  console.log('edit2 call',id)
+   var newEditedTaskData = [];
+   for (var i = 0; i < taskList.length; i++) {
+     if (taskList[i].id == id) {
+      taskList[i].key = taskList[i].key
+      taskList[i].id = taskList[i].id
+      taskList[i].taskName = updatedTaskName;
+      taskList[i].taskDescription = updatedTaskDescription;
+      taskList[i].isComplete =  taskList[i].isComplete
+      newEditedTaskData.push(taskList[i]);
+     } else {
+      newEditedTaskData.push(taskList[i]);
+    }
+  }
+  console.log(newEditedTaskData)
+  setTaskCard(newEditedTaskData);
+  }
+
   const handleAddTaskSubmit = (e) => {
     e.preventDefault();
     var id = Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
       .substring(1);
-    if (taskData[0].id == 1) {
-      taskData.pop();
-    }
     let newTaskData = {
       id: id,
       taskName: e.target.firstChild.childNodes[0].value,
       taskDescription: e.target.firstChild.childNodes[1].value,
+      isComplete: false,
     };
     setTaskCard([newTaskData, ...taskData]);
     taskData.unshift(newTaskData);
     setOpen(false);
   };
   return (
-    <div>
-      <div style={{ fontSize: "25px", display: "inline-block" }}> TO-DO:</div>
-      <Popup
-        contentStyle={{ width: "30%", height: "fit-content" }}
-        trigger={
-          <a className="add-task" href="#">
-            <img
-              onClick={handleAddTask}
-              src={AddTasksBtn}
-              alt="next button"
-              width="40"
-              height="40"
-            />{" "}
-          </a>
-        }
-        modal
-        open={isOpen}
-      >
-        {(close) => (
-          <div className="model">
-            <div className="row-1">
-              <span style={{ flexGrow: "2" }}>Add Task </span>
-              <button onClick={() => close()}>
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <form onSubmit={handleAddTaskSubmit}>
-              <div className="add-task-inputs">
-                <input
-                  type="text"
-                  className="form-control input-text"
-                  placeholder="Task Name"
-                  required=""
-                />
-                <textarea
-                  type="text"
-                  className="form-control input-text"
-                  placeholder="Task Description"
-                  required=""
-                />
-                <button type="submit" className="submit-new-task">
-                  <span aria-hidden="true">Submit</span>
+    <>
+      <div className="to-do-tasks">
+        <div style={{ fontSize: "25px", display: "inline-block" }}> TO-DO:</div>
+        <Popup
+          contentStyle={{ minWidth: "30%", width: "30%" }}
+          trigger={
+            <a className="add-task" href="#">
+              <img
+                onClick={handleAddTask}
+                src={AddTasksBtn}
+                alt="next button"
+                width="40"
+                height="40"
+              />{" "}
+            </a>
+          }
+          modal
+          open={isOpen}
+        >
+          {(close) => (
+            <div className="model">
+              <div className="row-1">
+                <span style={{ flexGrow: "2" }}>Add Task </span>
+                <button onClick={() => close()}>
+                  <span aria-hidden="true">×</span>
                 </button>
               </div>
-            </form>
+              <form onSubmit={handleAddTaskSubmit}>
+                <div className="add-task-inputs">
+                  <input
+                    type="text"
+                    className="form-control input-text"
+                    placeholder="Task Name"
+                    required=""
+                  />
+                  <textarea
+                    type="text"
+                    className="form-control input-text"
+                    placeholder="Task Description"
+                    required=""
+                  />
+                  <button type="submit" className="submit-new-task">
+                    <span aria-hidden="true">Submit</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </Popup>
+        {taskList
+          .filter((e) => e.isComplete !== true)
+          .map((taskList) => (
+            <TaskCard
+              key = {taskList.id}
+              id = {taskList.id}
+              updateStatusHandler = {updateStatusHandler}
+              editHandler = {editHandler}
+              title = {taskList.taskName}
+              description = {taskList.taskDescription}
+              isComplete = {taskList.isComplete}
+            />
+          ))}
+      </div>
+      <div className="completed-tasks">
+        <div>
+          <div
+            style={{
+              fontSize: "25px",
+              display: "inline-block",
+              marginTop: "15px",
+            }}
+          >
+            Completed Tasks:
           </div>
-        )}
-      </Popup>
-      {taskCard.map((taskCard) => (
-        <TaskCard
-          key={taskCard.id}
-          title={taskCard.taskName}
-          description={taskCard.taskDescription}
-          display
-        />
-      ))}
-    </div>
+
+          {taskList
+            .filter((e) => e.isComplete == true)
+            .map((taskList) => (
+              <TaskCard
+                key = {taskList.id}
+                title = {taskList.taskName}
+                description = {taskList.taskDescription}
+                id = {taskList.id}
+                updateStatusHandler = {updateStatusHandler}
+                isComplete = {taskList.isComplete}
+              />
+            ))}
+        </div>
+      </div>
+    </>
   );
 };
+
 export default ToDoList;
