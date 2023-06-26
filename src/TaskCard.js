@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./App.css";
 
-const TaskCard = ({ id,title, isComplete, description, updateStatusHandler , editHandler}) => {
+const TaskCard = ({ id, title, isComplete, description, updateStatusHandler, editHandler}) => {
  const [isOpen, setOpen] = useState(false);
 
  const handleEditTask = (e) => {
@@ -14,7 +14,6 @@ const TaskCard = ({ id,title, isComplete, description, updateStatusHandler , edi
 
  const editTaskHandler = (e) => {
   e.preventDefault()
-  console.log('id1',id,e)
   editHandler(e.target.firstChild.childNodes[0].value,e.target.firstChild.childNodes[1].value,id)
   setOpen(false)
  } 
@@ -54,14 +53,14 @@ const TaskCard = ({ id,title, isComplete, description, updateStatusHandler , edi
                   <input
                     type="text"
                     name="taskName"
-                    
+                    defaultValue={title}
                     placeholder="Task Name"
                     required=""
                   />
                   <textarea
                     type="text"
                     name="taskDescription"
-                    
+                    defaultValue={description}
                     placeholder="Task Description"
                   />
                   <button type="submit" className="submit-edited-task">

@@ -14,14 +14,12 @@ const ToggleTaskDays = () => {
     let dateObj = new Date(todayDate);                    
     dateObj.setDate(dateObj.getDate() - 1);
     const prevDate = `${dateObj.getFullYear()}/${dateObj.getMonth()+1}/${dateObj.getDate()}`;
-    console.log(prevDate )
     setPreviousDate(prevDate)
   } 
   const getNextDates = () => {
     let dateObj = new Date(todayDate);                    
     dateObj.setDate(dateObj.getDate() + 1);
     const  nextDate = `${dateObj.getFullYear()}/${dateObj.getMonth()+1}/${dateObj.getDate()}`;
-    console.log(nextDate )
     setPreviousDate(nextDate)
   }
   return (

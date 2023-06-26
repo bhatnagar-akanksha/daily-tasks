@@ -25,15 +25,12 @@ const ToDoList = () => {
   const [taskList, setTaskCard] = useState(taskData);
  
   const updateStatusHandler = (id) => {
-    console.log(id);
     var newTaskData = [];
     for (var i = 0; i < taskList.length; i++) {
-      if (taskList[i].id == id) {
+      if (taskList[i].id === id) {
         taskList[i].isComplete = !taskList[i].isComplete;
-        newTaskData.push(taskList[i]);
-      } else {
-        newTaskData.push(taskList[i]);
-      }
+      } 
+      newTaskData.push(taskList[i]);
     }
     setTaskCard(newTaskData);
   };
@@ -43,21 +40,14 @@ const ToDoList = () => {
   };
 
   const editHandler = (updatedTaskName,updatedTaskDescription,id) => {
-  console.log('edit2 call',id)
    var newEditedTaskData = [];
    for (var i = 0; i < taskList.length; i++) {
-     if (taskList[i].id == id) {
-      taskList[i].key = taskList[i].key
-      taskList[i].id = taskList[i].id
+     if (taskList[i].id === id) {
       taskList[i].taskName = updatedTaskName;
       taskList[i].taskDescription = updatedTaskDescription;
-      taskList[i].isComplete =  taskList[i].isComplete
+     }
       newEditedTaskData.push(taskList[i]);
-     } else {
-      newEditedTaskData.push(taskList[i]);
-    }
   }
-  console.log(newEditedTaskData)
   setTaskCard(newEditedTaskData);
   }
 
@@ -127,7 +117,7 @@ const ToDoList = () => {
           )}
         </Popup>
         {taskList
-          .filter((e) => e.isComplete !== true)
+          .filter((taskItem) => taskItem.isComplete !== true)
           .map((taskList) => (
             <TaskCard
               key = {taskList.id}
@@ -153,7 +143,7 @@ const ToDoList = () => {
           </div>
 
           {taskList
-            .filter((e) => e.isComplete == true)
+            .filter((taskItem) => taskItem.isComplete == true)
             .map((taskList) => (
               <TaskCard
                 key = {taskList.id}
