@@ -1,6 +1,6 @@
 import React from 'react'
 import './MainContainer.css'
-import {ToggleTaskDays,CompletedTaskLists} from './ToggleTask'
+import ToggleTaskDays from './ToggleTask'
 import ToDoList from './ToDoList';
 
 const MainContainer = () =>{
@@ -9,7 +9,7 @@ return(
     <ToggleTaskDays/>
     <div className='task-lists'>
         <ToDoList/>
-        <CompletedTaskLists/>
+
     </div>
   </div>
 );    

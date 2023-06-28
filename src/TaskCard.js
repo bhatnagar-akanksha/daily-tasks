@@ -5,32 +5,31 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./App.css";
 
-const TaskCard = ({ title, display, description, id }) => {
-  const [taskName, setTaskName] = useState(title);
-  const [taskDescription, setTaskDescription] = useState(description);
-  const [isOpen, setOpen] = useState(false);
-  const handleEditTask = (e) => {
+const TaskCard = ({ id, title, isComplete, description, updateStatusHandler, editHandler}) => {
+ const [isOpen, setOpen] = useState(false);
+
+ const handleEditTask = (e) => {
     setOpen(true);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setTaskName(e.target.firstChild.childNodes[0].value);
-    setTaskDescription(e.target.firstChild.childNodes[1].value);
-    setOpen(false);
-  };
+
+ const editTaskHandler = (e) => {
+  e.preventDefault()
+  editHandler(e.target.firstChild.childNodes[0].value,e.target.firstChild.childNodes[1].value,id)
+  setOpen(false)
+ } 
   return (
     <div className="card">
-      <div key={id} className="flex-box">
-        <span className="card-info" value={taskName}>
-          {taskName}
+      <div className="flex-box">
+        <span className="card-info" value={title}>
+          {title}
         </span>
         <Popup
-          contentStyle={{ width: "30%", height: "fit-content" }}
+          contentStyle={{ minWidth: "30%", width:"30%"}}
           trigger={
-            <span className={display ? "edit-btn" : "hidden edit-btn"}>
+            <span className = {isComplete !== true ? "edit-btn" : "hidden edit-btn"}>
               {" "}
               <img
-                onClick={handleEditTask}
+                onClick = {handleEditTask}
                 src={editBtn}
                 alt="edit button"
                 width="30"
@@ -44,24 +43,24 @@ const TaskCard = ({ title, display, description, id }) => {
           {(close) => (
             <div className="model">
               <div className="row-1">
-                <span style={{ flexGrow: "2" }}>Edit Task </span>
+                <span style={{ flexGrow: "2"}}>Edit Task </span>
                 <button onClick={() => close()}>
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit = {editTaskHandler} >
                 <div className="add-task-inputs">
                   <input
                     type="text"
                     name="taskName"
-                    value={taskName}
+                    defaultValue={title}
                     placeholder="Task Name"
                     required=""
                   />
                   <textarea
                     type="text"
                     name="taskDescription"
-                    value={taskDescription}
+                    defaultValue={description}
                     placeholder="Task Description"
                   />
                   <button type="submit" className="submit-edited-task">
@@ -72,14 +71,14 @@ const TaskCard = ({ title, display, description, id }) => {
             </div>
           )}
         </Popup>
-        <input
+        <input onClick = {()=> updateStatusHandler(id)}
           className="complete"
           value="test"
           type="checkbox"
-          defaultChecked={!display}
+          defaultChecked = {isComplete}
         />
       </div>
-      <div value={taskDescription}>{taskDescription}</div>
+      <div value={description}>{description}</div>
     </div>
   );
 };
